@@ -28,13 +28,15 @@ func main() {
 		}
 
 		// Use pipeline to remove cache
-		pipe := rdb.Pipeline()
-		for _, key := range keys {
-			pipe.Del(ctx, key)
-		}
-		_, err = pipe.Exec(ctx)
-		if err != nil {
-			fmt.Println("Error in pipeline execution:", err)
+		if len(keys) != 0 {
+			pipe := rdb.Pipeline()
+			for _, key := range keys {
+				pipe.Del(ctx, key)
+			}
+			_, err = pipe.Exec(ctx)
+			if err != nil {
+				fmt.Println("Error in pipeline execution:", err)
+			}
 		}
 
 		if cursor == 0 {
