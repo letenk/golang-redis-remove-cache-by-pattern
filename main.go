@@ -15,7 +15,7 @@ func main() {
 	})
 
 	batchSize := int64(100)
-	pattern := "*skypiea:articles:infinite:recommended:*"
+	pattern := "*:articles:*"
 
 	// search key per batch
 	var cursor uint64
